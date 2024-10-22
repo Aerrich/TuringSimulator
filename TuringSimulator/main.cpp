@@ -7,17 +7,19 @@ int main(int argc, char* argv[])
 {
 	
 	//Pfad zur Datei
-
-	std::string path = "C:/Users/erikz/Downloads/aufg5.TM";
+	
+	std::string path = argv[1];
+	//std::string path = "C:/Users/erikz/Desktop/Abgabe1/einsPunktFünf.TM";
 	std::vector<std::string> tmFile = readTM(path);
 	
 	//Eingabe
 
-	std::string x = "110";
+	std::string eingabe = argv[2];
+	//std::string eingabe = "110101011001";
 
 	//Initialisierung der TM
 
-	turing t = turing(tmFile, x);//argv[2]
+	turing t = turing(tmFile, eingabe);
 
 	//Start der Berechnung
 
@@ -26,9 +28,5 @@ int main(int argc, char* argv[])
 	//Ausgabe des Ergebnis
 
 	std::cout << r << std::endl;
-
-
-
-	std::cin.get();
 
 }

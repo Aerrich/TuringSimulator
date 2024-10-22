@@ -125,19 +125,14 @@ std::string turing::run()
 				if (func[4].at(i) == "R")
 				{
 
-					if (band.size() == bandZeiger)
-					{
-
-						band.push_back('B');
-
-					}
+					
 
 					bandZeiger++;
 					bo = false;
 				}
 				if (func[4].at(i) == "L")
 				{
-
+					//Überprüfen ob Band links zu kurz ist
 					if(0 == bandZeiger)
 					{
 
@@ -156,8 +151,18 @@ std::string turing::run()
 
 				}
 				if (func[4].at(i) == "N")
-				{
+				{	
+
+					
+
 					bo = false;
+				}
+				//Überprüfen ob Band rechts zu kurz wird
+				if (band.size()-1 == bandZeiger)
+				{
+
+					band.push_back('B');
+
 				}
 			}
 
@@ -165,10 +170,11 @@ std::string turing::run()
 
 	}
 	
-	//Ausgabe des Bandes ab dem Zeiger bis vor das letzte Blank
+	bandAusgeben();
+	//Ausgabe des Bandes ab dem Zeiger bis zum ersten Symbol welches nicht im Eingabealphabet ist
 
-	std::string res;
-
+	std::string res = "";
+	
 	for (int i = bandZeiger; bandOhneEingabe.find(band.at(i)) == std::string::npos; i++)
 	{
 
